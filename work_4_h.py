@@ -1,4 +1,5 @@
 import tkinter as tk
+import random
 
 # ↓↓↓ お約束のコード ↓↓↓
 window = tk.Tk()
@@ -21,9 +22,14 @@ def names():
     name = entry1.get()
     name_list.append(name)
     for i in name_list:
-        print(i)
+        # print(i)
         name_out += f"{i}\n"
     label2.config(text=name_out)
+
+
+def select():
+    name_num = random.randint(0, len(name_list) - 1)
+    label3.config(text=name_list[name_num])
 
 
 # TODO 1. ラベル: 名前を入力してください
@@ -44,6 +50,16 @@ button1.pack(pady=10)
 # 出力ラベルの作成
 label2 = tk.Label(window, text="", bg=bg_color, fg=fg_color)
 label2.pack(pady=10)
+
+
+# ランダム選択
+button2 = tk.Button(window, text="ランダム", command=select)
+button2.pack(pady=10)
+
+# 出力ラベルの作成
+label3 = tk.Label(window, text="ランダム", bg=bg_color, fg=fg_color)
+label3.pack(pady=10)
+
 
 # ↓↓↓ お約束のコード ↓↓↓
 window.mainloop()
